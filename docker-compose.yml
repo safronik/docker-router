@@ -1,12 +1,7 @@
-version: '3'
-
 services:
 
     # Reverse proxy server
     webserver:
-        build:
-            context: ./dockerfiles
-            dockerfile: nginx.dockerfile
         image: jwilder/nginx-proxy
         container_name: router-nginx
         ports:
@@ -20,7 +15,6 @@ services:
           - ./html:/usr/share/nginx/html
           - /var/run/docker.sock:/tmp/docker.sock:ro
         networks:
-            - inner
             - nginx-proxy
         extra_hosts:
             host.docker.internal: host-gateway
@@ -30,24 +24,15 @@ services:
     letsencrypt:
         image: jrcs/letsencrypt-nginx-proxy-companion
         container_name: router-letsencrypt
-        volumes_from:
-          - webserver
         volumes:
+            - ./config/nginx_hosts:/etc/nginx/vhost.d
             - ./certs:/etc/nginx/certs:rw
             - ./html:/usr/share/nginx/html
             - /var/run/docker.sock:/var/run/docker.sock:ro
-        networks: 
-            - inner
-        extra_hosts:
-            host.docker.internal: host-gateway
         restart: unless-stopped
 
 networks:
 
-    # Inner bridge network 
-    inner:
-        driver: bridge
-        
     # Common network for other services
     nginx-proxy:
         driver: bridge

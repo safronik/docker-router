@@ -2,10 +2,10 @@
 #
 # ...
 # include /etc/nginx/vhost.d/default; <----- here it is
-# location / {
-# 	proxy_pass http://sandbox.loc;
-# 	set $upstream_keepalive false;
-# 	include /etc/nginx/vhost.d/default_location;
-# 	include /etc/nginx/vhost.d/sandbox.loc_location;
+# location /some {
+# 	proxy_pass http://sandbox-router;
+# 	#set $upstream_keepalive false;
+# 	#include /etc/nginx/vhost.d/default_location;
+# 	#include /etc/nginx/vhost.d/sandbox.loc_location;
 # }
 # ...

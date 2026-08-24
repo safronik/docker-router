@@ -14,10 +14,6 @@ clone repository
 
 `git clone https://github.com/safronik/docker-router.git ./`
 
-create a network to route your requests
-
-`docker network create nginx-proxy`
-
 run docker composer form the repo directory
 
 `docker composer up -d`
