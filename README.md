@@ -7,7 +7,7 @@ Sometimes you need to run multiple projects which are using similar ports. So yo
 
 `Cannot start Docker Compose application. Reason: compose [start] exit status 1. Container nginx-proxy Starting Error response from daemon: driver failed programming external connectivity on endpoint nginx-proxy ( *** ): Bind for 0.0.0.0:80 failed: port is already allocated`
 
-So here is a solution based on: https://olex.biz/2019/09/hosting-with-docker-nginx-reverse-proxy-letsencrypt/
+This solution is based on: https://olex.biz/2019/09/hosting-with-docker-nginx-reverse-proxy-letsencrypt/
 
 # Usage
 clone repository
