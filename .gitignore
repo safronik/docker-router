@@ -1,4 +1,7 @@
 .idea
+.claude
+.git
+.tasks
 
 # Certificates folder
 certs/*

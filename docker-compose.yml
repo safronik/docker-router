@@ -2,7 +2,7 @@ services:
 
     # Reverse proxy server
     webserver:
-        image: jwilder/nginx-proxy
+        image: nginxproxy/nginx-proxy:1.11
         container_name: router-nginx
         ports:
           - "80:80"
@@ -22,12 +22,13 @@ services:
 
     # SSL companion
     letsencrypt:
-        image: jrcs/letsencrypt-nginx-proxy-companion
+        image: nginxproxy/acme-companion:2.6
         container_name: router-letsencrypt
         volumes:
             - ./config/nginx_hosts:/etc/nginx/vhost.d
             - ./certs:/etc/nginx/certs:rw
             - ./html:/usr/share/nginx/html
+            - ./acme.sh:/etc/acme.sh
             - /var/run/docker.sock:/var/run/docker.sock:ro
         restart: unless-stopped
 
