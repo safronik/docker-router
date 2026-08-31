@@ -24,6 +24,13 @@ services:
     letsencrypt:
         image: nginxproxy/acme-companion:2.6
         container_name: router-letsencrypt
+        environment:
+            # Без этого companion не находит контейнер nginx (нет ни метки
+            # com.github.nginx-proxy.nginx, ни volumes_from) и падает с
+            # "Error: can't get nginx-proxy container ID !"
+            - NGINX_PROXY_CONTAINER=router-nginx
+            # Контакт ACME для проектов без своего LETSENCRYPT_EMAIL
+            - DEFAULT_EMAIL=r.safronik@gmail.com
         volumes:
             - ./config/nginx_hosts:/etc/nginx/vhost.d
             - ./certs:/etc/nginx/certs:rw
