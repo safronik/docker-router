@@ -1,4 +1,5 @@
 .idea
+.env
 .claude
 .git
 .tasks
@@ -8,6 +9,9 @@ certs/*
 
 # DH
 dhparam/*
+
+# ACME account state (acme.sh)
+acme.sh/*
 
 # HTML directory for deafults
 html/*

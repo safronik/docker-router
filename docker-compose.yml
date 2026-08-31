@@ -24,6 +24,9 @@ services:
     letsencrypt:
         image: nginxproxy/acme-companion:2.6
         container_name: router-letsencrypt
+        environment:
+            - NGINX_PROXY_CONTAINER=router-nginx
+            - DEFAULT_EMAIL=${DEFAULT_EMAIL}
         volumes:
             - ./config/nginx_hosts:/etc/nginx/vhost.d
             - ./certs:/etc/nginx/certs:rw
