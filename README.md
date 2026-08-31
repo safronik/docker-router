@@ -16,7 +16,7 @@ clone repository
 
 run docker composer form the repo directory
 
-`docker composer up -d`
+`docker compose up -d`
 
 append the proxy network and environment var to you front app(ngixn for example) in docker-compose.yml
 ```
