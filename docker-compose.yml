@@ -31,7 +31,7 @@ services:
             - ./config/nginx_hosts:/etc/nginx/vhost.d
             - ./certs:/etc/nginx/certs:rw
             - ./html:/usr/share/nginx/html
-            - ./acme.sh:/etc/acme.sh
+            - acme_sh:/etc/acme.sh
             - /var/run/docker.sock:/var/run/docker.sock:ro
         restart: unless-stopped
 
@@ -41,3 +41,8 @@ networks:
     nginx-proxy:
         driver: bridge
         name: nginx-proxy
+
+volumes:
+
+    # Состояние acme.sh (регистрация аккаунта, ключи) — пишет только контейнер letsencrypt
+    acme_sh:
