@@ -40,6 +40,8 @@ fi
 
 log "DEFAULT_EMAIL=${email} записан в ${ENV_FILE}"
 
+"${ROOT}/bin/gen-default-cert.sh"
+
 docker compose -f "${ROOT}/docker-compose.yml" up -d
 
 log 'Роутер запущен: docker compose ps для проверки статуса.'
