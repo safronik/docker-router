@@ -8,7 +8,7 @@
 # сертификатов при сбое автопродления.
 #
 # Использование:
-#   ./deploy.sh
+#   ./deploy-local.sh
 
 set -euo pipefail
 
@@ -25,7 +25,7 @@ existing_email=''
 
 prompt="Email для Let's Encrypt (DEFAULT_EMAIL)"
 [[ -n "${existing_email}" ]] && prompt+=" [${existing_email}]"
-read -rp "${prompt}: " input_email
+read -rp "${prompt}: " input_email < /dev/tty
 email="${input_email:-${existing_email}}"
 
 [[ -n "${email}" ]] || die 'email не может быть пустым'

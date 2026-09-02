@@ -10,11 +10,16 @@ Sometimes you need to run multiple projects which are using similar ports. So yo
 This solution is based on: https://olex.biz/2019/09/hosting-with-docker-nginx-reverse-proxy-letsencrypt/
 
 # Usage
-clone repository
+
+One-liner install (clones the repo into `./router` and runs `deploy-local.sh`):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/safronik/docker-router/main/deploy-via-download.sh | bash
+```
+
+Or clone manually and run `docker compose up -d`:
 
 `git clone https://github.com/safronik/docker-router.git ./`
-
-run docker composer form the repo directory
 
 `docker compose up -d`
 
